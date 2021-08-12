@@ -1,6 +1,7 @@
 package Classes;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,19 +17,39 @@ public class NovoMain {
 		// doacoes novaDoacao = new doacoes();
 		Scanner ler = new Scanner(System.in);
 		int doar;
-
+		int esc;
+		boolean sair = false;
+		
 		System.out.println("\n\t\t\tSistema de Doações do Natal Solidário");
-		System.out.println("\nGostaria de fazer uma doação?");
-		System.out.println("\nEscolha: \n(1) Para sim. \n(2) Para não.");
-		doar = ler.nextInt();
-
-		if (doar == 1) {
-			novoCadastro.cadastro();
-			novoCadastroDoacao.cadastroDoacao();
-
-			System.out.println("Cadastro e doação registrados! Obrigado!");
+		
+		while(sair == false) {
+			System.out.println("\nDeseja fazer uma contribuição?\n"
+					+ "1 - Sim.\n"
+					+ "2 - Não.");
+			
+			System.out.print("Digite uma das opções: "); 
+			try {
+				esc = ler.nextInt();
+				switch(esc) {
+				case 1:
+					novoCadastro.cadastro();
+					novoCadastroDoacao.cadastroDoacao();
+					sair = true;
+					break;
+				case 2:
+					System.out.println("Programa encerrado. Obrigado pela sua atenção.");
+					sair = true;
+					break;
+				default:
+					System.out.println("Opção invalida.\n");
+			}
+				break;
+			}catch (InputMismatchException e){
+				System.out.println("Exception - Por favor digite um numero");
+				sair = true;
+			}
 		}
-
+		
 	}
 
 }

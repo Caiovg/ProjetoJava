@@ -77,7 +77,7 @@ public class NovaDoacao {
 			switch (op) {
 			case 1: cadastroDoacao();
 			break;
-			case 2:System.out.println("Obrigado!");
+			case 2:System.out.println("Obrigado!, Enviaremos um e-mail para você confirmando sua doação.");
 			sair = true;
 			break;
 			}
